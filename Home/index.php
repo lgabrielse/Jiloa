@@ -244,7 +244,7 @@ tinymce.init({
 </table>
 <table width="50%" align="center" border="1" bordercolor="#FFFFFF" cellpadding="1" cellspacing="1" style="border-collapse:collapse">
   <tr>
-    <td width="5%" align="center" class="BlueBold_1414"><a href="../mrbs-1.4.10/web/index.php" target="_blank">Scheduling </a></td>
+    <td width="5%" align="center" class="BlueBold_1414"><a href="../../mrbs-1.4.10/web/index.php" target="_blank">Scheduling </a></td>
     <td width="5%" align="center" class="BlueBold_1414"><a href="http://mrbs.sourceforge.net/" target="_blank">MRBS</a></td>
     <td width="5%" align="center" class="BlueBold_1414"><a href="../Patient/PatPtOrders.php">PT<br>Pending</a></td>
     <!--<td width="5%" align="center"><a href="../Home/SurgREOrders.php">Surgery<br>Results</a></td>-->
