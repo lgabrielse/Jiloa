@@ -97,6 +97,13 @@ if(isset($_POST['surgery']) && $_POST['surgery'] == 'on'){
 
   mysql_select_db($database_swmisconn, $swmisconn);
   $Result1 = mysql_query($updateSQL, $swmisconn) or die(mysql_error());
+
+	  $updateSQL = sprintf("UPDATE anesthesia SET visitid=%s WHERE id=%s",
+                       GetSQLValueString($row_NewVisitid['newvisitid'], "int"),
+
+  mysql_select_db($database_swmisconn, $swmisconn);
+  $Result1 = mysql_query($updateSQL, $swmisconn) or die(mysql_error());
+
 	}
 
 //echo $_POST['pat_type']."--";

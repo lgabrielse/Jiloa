@@ -367,10 +367,16 @@ $totalRows_typ_loc = mysql_num_rows($typ_loc);
   // update visitid of surgery record to current visit id if surgery1 is checked
 if(isset($_POST['surgery1']) && $_POST['surgery1'] == 'on'){
 
-
 	  $updateSQL = sprintf("UPDATE surgery SET visitid=%s, origvisitid=%s WHERE id=%s",
                        GetSQLValueString($_POST['vid'], "int"),
                        GetSQLValueString($_POST['surgvisitid'], "int"),
+                       GetSQLValueString($_POST['surgid'], "int"));
+
+			mysql_select_db($database_swmisconn, $swmisconn);
+			$Result1 = mysql_query($updateSQL, $swmisconn) or die(mysql_error());
+
+	  $updateSQL = sprintf("UPDATE anesthesia SET visitid=%s WHERE id=%s",
+                       GetSQLValueString($_POST['vid'], "int"),
                        GetSQLValueString($_POST['surgid'], "int"));
 
 			mysql_select_db($database_swmisconn, $swmisconn);
@@ -388,6 +394,13 @@ if(isset($_POST['surgery2']) && $_POST['surgery2'] == 'on'){
 		  $updateSQL = sprintf("UPDATE surgery SET visitid=%s, origvisitid=%s WHERE id=%s",
                        GetSQLValueString($row_Surgery['origvisitid'], "int"),
                        GetSQLValueString(NULL, "int"),
+                       GetSQLValueString($row_Surgery['id'], "int"));
+
+  mysql_select_db($database_swmisconn, $swmisconn);
+  $Result1 = mysql_query($updateSQL, $swmisconn) or die(mysql_error());
+
+		  $updateSQL = sprintf("UPDATE anesthesia SET visitid=%s WHERE id=%s",
+                       GetSQLValueString($row_Surgery['origvisitid'], "int"),
                        GetSQLValueString($row_Surgery['id'], "int"));
 
   mysql_select_db($database_swmisconn, $swmisconn);

@@ -129,7 +129,7 @@ $totalRows_firstord  = mysql_num_rows($firstord );
 	}
 // query to display the selected surgery
 mysql_select_db($database_swmisconn, $swmisconn);
-$query_surgupdate = sprintf("SELECT s.id sid, s.medrecnum, s.visitid, s.feeid, s.ordid, s.surgdate, s.surgeon, s.surgeonassist, s.anesthetist, s.anesttechnique, s.preopdiag, s.postopdiag, s.incision, s.findings, s.procedures, s.difficulties, s.closure, s.postoporders, s.status, s.begincount, s.endcount, s.entrydt, s.entryby, s.origvisitid, f.name, f.descr FROM surgery s join fee f on s.feeid = f.id WHERE s.medrecnum = %s and s.id = %s", GetSQLValueString($colname_mrn_surgupdate, "int"), GetSQLValueString($colname_sid_surgupdate, "int"));
+$query_surgupdate = sprintf("SELECT s.id sid, s.medrecnum, s.visitid, s.feeid, s.ordid, s.surgdate, s.surgeon, s.surgeonassist, s.anesthetist, s.anesttechnique, s.preopdiag, s.postopdiag, s.incision, s.findings, s.procedures, s.difficulties, s.closure, s.postoporders, s.status, s.begincount, s.endcount, s.entrydt, s.entryby, s.origvisitid, f.name, f.descr, DATE_FORMAT(v.visitdate,'%%d-%%b-%%Y') visitdate FROM surgery s join fee f on s.feeid = f.id join patvisit v on s.visitid = v.id WHERE s.medrecnum = %s and s.id = %s", GetSQLValueString($colname_mrn_surgupdate, "int"), GetSQLValueString($colname_sid_surgupdate, "int"));
 $surgupdate = mysql_query($query_surgupdate, $swmisconn) or die(mysql_error());
 $row_surgupdate = mysql_fetch_assoc($surgupdate);
 $totalRows_surgupdate = mysql_num_rows($surgupdate);
@@ -262,9 +262,9 @@ $('#scheddt').datetimepicker({
 </head>
 <body>
 
-<div align="right" class="BlueBold_24">UPDATE SURGERY
+<div align="right"> <span class="Black_12">Visit Date: </span><span class="BlackBold_16"><?php echo $row_surgupdate['visitdate'] ?></span><?php echo str_repeat("&nbsp;", 40);?> <span class="BlueBold_24">UPDATE SURGERY</span> 
          <!--  link to Anesthersia page-->
-        <span><?php echo str_repeat("&nbsp;", 30);?>
+        <span><?php echo str_repeat("&nbsp;", 50);?>
         <a href="PatShow1.php?mrn=<?php echo $row_surgupdate['medrecnum'] ?>&vid=<?php echo $row_surgupdate['visitid'] ?>&sid=<?php echo $row_surgupdate['sid'] ?>&visit=PatVisitView.php&act=lab&pge=PatAnestPreopEdit.php"  style="background-color:green; border-color:blue; color:white; text-align:center; border-radius:5px;">Anest Preop</a></span>&nbsp;&nbsp;
         <span><a href="PatShow1.php?mrn=<?php echo $row_surgupdate['medrecnum'] ?>&vid=<?php echo $row_surgupdate['visitid'] ?>&sid=<?php echo $row_surgupdate['sid'] ?>&visit=PatVisitView.php&act=lab&pge=PatAnestIntraopEdit.php" style="background-color:yellow; border-color:blue; color:black; text-align:center;border-radius:5px;">Anest Intraop</a></span>&nbsp;&nbsp;
         <span><a href="PatShow1.php?mrn=<?php echo $row_surgupdate['medrecnum'] ?>&vid=<?php echo $row_surgupdate['visitid'] ?>&sid=<?php echo $row_surgupdate['sid'] ?>&visit=PatVisitView.php&act=lab&pge=PatAnestPostopEdit.php" style="background-color:orange; border-color:blue; color:white; text-align:center; border-radius:5px;">Anest Postop</a></span>
@@ -285,7 +285,7 @@ $('#scheddt').datetimepicker({
               <?php if($totalRows_allsurg == 0){?>
               <td nowrap="nowrap" class="RedBold_24"> ALL are Complete</td>
              <?php  } else {?>
-                <td title=><select name="sids" size="5" onChange="document.sidselect.submit();">&nbsp;
+                <td title=""><select name="sids" size="5" onChange="document.sidselect.submit();">&nbsp;
                <?php
       do {  
       ?>

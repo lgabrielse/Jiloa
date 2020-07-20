@@ -280,7 +280,7 @@ $('#esscheddt').datetimepicker({
 						<table border="1" align="left" cellpadding="1" cellspacing="1" bgcolor="#F8FDCE">
  					 <form method="POST" name="anestintraop" action="<?php echo $editFormAction; ?>" >
 							<tr>
-								<td nowrap>Presenting Patient condition:
+								<td nowrap title="MRN: <?php echo $row_anestintraop['medrecnum'] ?>&#10;VisitID: <?php echo $row_anestintraop['visitid'] ?>&#10;SurgID: <?php echo $row_anestintraop['surgid'] ?>&#10;AnestID: <?php echo $row_anestintraop['aid'] ?> ">Presenting Patient condition:
                   <select name="PtCondition" id="PtCondition">
                     <option value="" <?php if (!(strcmp("Select", $row_anestintraop['PtCondition']))) {echo "selected=\"selected\"";} ?>>Select</option>
                     <option value="Good" <?php if (!(strcmp("Good", $row_anestintraop['PtCondition']))) {echo "selected=\"selected\"";} ?>>Good</option>
