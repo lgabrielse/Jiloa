@@ -192,7 +192,7 @@ $('#postopexamdt').datetimepicker({
     <td>
   		<table border="1" align="center" bgcolor="#ffedcc" cellpadding="1" cellspacing="1">
    			<tr>
-            <td height="18" align="right" scope="row">postopexamdt:</td>
+            <td height="18" align="right" scope="row" title="MRN: <?php echo $row_anestpostop['medrecnum'] ?>&#10;VisitID: <?php echo $row_anestpostop['visitid'] ?>&#10;SurgID: <?php echo $row_anestpostop['surgid'] ?>&#10;AnestID: <?php echo $row_anestpostop['aid'] ?> ">postopexamdt:</td>
             <td  colspan="2" align="left" nowrap="nowrap">
 <?php  if(isset($row_anestpostop['postopexamdt']) && $row_anestpostop['postopexamdt'] != NULL ) {?>
               <input id="postopexamdt" name="postopexamdt" type="text" size="12" maxlength="12" value="<?php echo  date('D M d,Y', $row_anestpostop['postopexamdt']) ;?>" />

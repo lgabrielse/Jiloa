@@ -54,7 +54,7 @@ if ((isset($_POST['id'])) && ($_POST['id'] != "")) {
 		$row_anestid = mysql_fetch_assoc($anestid);
 		$totalRows_anestid = mysql_num_rows($anestid);
 	// delete the surgery record		
-		$deleteSQL = sprintf("DELETE FROM surgery WHERE id=%s",   
+		$deleteSQL = sprintf("DELETE FROM surgery WHERE id=%s",  
 			GetSQLValueString($row_surgid['id'], "int"));
 		mysql_select_db($database_swmisconn, $swmisconn);
 		$Result1 = mysql_query($deleteSQL, $swmisconn) or die(mysql_error());
