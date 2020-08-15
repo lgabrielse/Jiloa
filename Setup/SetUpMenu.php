@@ -127,7 +127,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+  <td bgcolor="#FFFFFF" class="BlueBold_14"><a href="BedList.php">Bed BedList</a></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
